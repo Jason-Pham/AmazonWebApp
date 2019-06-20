@@ -15,10 +15,11 @@ import java.time.LocalDateTime;
 import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 
 public class Utils {
-
+    public static float totalPrice = 0;
+    public static int totalItem = 0;
     private static long waitTime = 15;
 
-    private static void captureScreenshot() throws IOException {
+    public static void captureScreenshot() throws IOException {
         Reporter.addScreenCaptureFromPath(ScreenshotHelper.takeScreenshot(Hooks.driver,
                 LocalDateTime.now().getHour()
                         + LocalDateTime.now().getMinute()
