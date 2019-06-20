@@ -10,7 +10,7 @@ import step_definitions.BaseSteps;
 import java.io.IOException;
 
 public class DealPageSteps extends BaseSteps {
-    @And("^User sort the items by \"([^\"]*)\"$")
+    @And("^User sort the deal items by \"([^\"]*)\"$")
     public void userSortTheItemBy(String sortType) throws IOException {
         dealPageActions.ExecuteClickOnSortButton();
         dealPageActions.ExecuteClickOnSortButtonType(sortType);

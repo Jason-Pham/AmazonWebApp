@@ -1,5 +1,6 @@
 package step_definitions.HomePageSteps;
 
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import helpers.Constant;
@@ -16,6 +17,11 @@ public class HomePageSteps extends BaseSteps {
             baseStepsDriver.navigate().to(UrlEnvInfo.amazon_au_prod);
 
         System.out.println("Open Liquid home page browser id: " + baseStepsDriver);
+    }
+
+    @And("^User search for \"([^\"]*)\"$")
+    public void useSearch(String searchText) throws Throwable {
+        homePageActions.Search(searchText);
     }
 
     @When("^User clicks on \"([^\"]*)\" button$")

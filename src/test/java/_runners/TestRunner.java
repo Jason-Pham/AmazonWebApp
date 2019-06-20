@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 @CucumberOptions(
         features = "src/test/resources/features",
-        tags = "@WebUI",
+        tags = "@Search",
         plugin = {"pretty", "com.vimalselvam.cucumber.listener.ExtentCucumberFormatter:target/Amazon-reports/report.html"},
         glue = "step_definitions")
 

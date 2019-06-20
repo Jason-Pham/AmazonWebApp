@@ -59,6 +59,40 @@ public class Utils {
         }
     }
 
+    private static void clear(WebElement element) throws IOException {
+        try {
+            waitForElement(element, waitTime);
+
+            element.clear();
+            PrintLog.printLogActionInPage("Text area is cleared on this element: \n" + element.toString());
+        } catch (NullPointerException | WebDriverException e) {
+            PrintLog.printLogErrorActionOfElement("Clear element: \n",
+                    element.toString(), e.getMessage());
+
+            captureScreenshot();
+
+            Assert.fail();
+        }
+    }
+
+    public static void sendKeys(WebElement element, String keys) throws IOException {
+        try {
+            waitForElement(element, waitTime);
+            clear(element);
+
+            element.sendKeys(keys);
+            PrintLog.printLogActionInPage(keys + " was sent to this element: \n" + element.toString());
+            captureScreenshot();
+        } catch (NullPointerException | WebDriverException e) {
+            PrintLog.printLogErrorActionOfElement("Send keys",
+                    element.toString(), e.getMessage());
+
+            captureScreenshot();
+
+            Assert.fail();
+        }
+    }
+
     public static void waitForPageToLoad(){
         new WebDriverWait(Hooks.driver, waitTime + 15).until(
                 webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
