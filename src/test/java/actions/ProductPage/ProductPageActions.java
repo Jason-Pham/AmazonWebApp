@@ -44,14 +44,14 @@ public class ProductPageActions extends BaseActions {
     }
 
     public void ExecuteAddToCart(int numberOfProduct) throws IOException {
-        Reporter.addStepLog("Product price: " + product_price_text.get(product_price_text.size() - 1).getText());
-
         if(numberOfProduct > 0) {
             waitForPageToLoad();
             //waitForElement(quantity_dropbox, waitTime);
 
             //Choose the size if the dropbox is available
             ChooseSize();
+
+            Reporter.addStepLog("Product price: " + product_price_text.get(product_price_text.size() - 1).getText());
 
             if (quantity_dropbox_options.size() != 0) {
                 if (numberOfProduct > quantity_dropbox_options.size()) {
