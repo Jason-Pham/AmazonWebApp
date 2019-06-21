@@ -44,21 +44,41 @@ public class ProductPageActions extends BaseActions {
     }
 
     public void ExecuteAddToCart(int numberOfProduct) throws IOException {
-        waitForPageToLoad();
+        Reporter.addStepLog("Product price: " + product_price_text.get(product_price_text.size() - 1).getText());
 
-        //Choose the size if the dropbox is available
-        ChooseSize();
+        if(numberOfProduct > 0) {
+            waitForPageToLoad();
+            //waitForElement(quantity_dropbox, waitTime);
 
-        if (numberOfProduct > quantity_dropbox_options.size()) {
-            Assert.assertTrue(true, "Product does not have enough stocks to add: " + numberOfProduct);
-            Reporter.addStepLog("Product does not have enough stocks to add: " + numberOfProduct);
+            //Choose the size if the dropbox is available
+            ChooseSize();
 
-            captureScreenshot();
-        } else {
-            ChooseQuantity(numberOfProduct);
+            if (quantity_dropbox_options.size() != 0) {
+                if (numberOfProduct > quantity_dropbox_options.size()) {
+                    Assert.assertTrue(true, "Product does not have enough stocks to add: " + numberOfProduct);
+                    Reporter.addStepLog("Product does not have enough stocks to add: " + numberOfProduct);
 
+                    captureScreenshot();
+                } else {
+
+                    ChooseQuantity(numberOfProduct);
+
+                    clickAddToCart(numberOfProduct);
+                }
+            } else {
+                //If there is no quantity box, user cannot choose quantity
+                numberOfProduct = 1;
+                Reporter.addStepLog("There is no quantity dropbox to choose, " +
+                        "so user will just click add to cart");
+                clickAddToCart(numberOfProduct);
+            }
+        }
+    }
+
+    private void clickAddToCart(int numberOfProduct) throws IOException {
+        if (product_price_text.size() > 0) {
             //get the product price
-            String price_text = product_price_text.get(0).getText().replace("$", "");
+            String price_text = product_price_text.get(product_price_text.size() - 1).getText().replace("$", "");
             float price = Float.valueOf(price_text);
             float add_to_cart_price = numberOfProduct * price;
 
@@ -88,6 +108,8 @@ public class ProductPageActions extends BaseActions {
                     List<WebElement> itemNumberAfterAddToCart =
                             baseActionsDriver.findElements
                                     (By.xpath("//*[contains(text(), '"
+                                            + totalItem + " item') " +
+                                            "or contains(text(), '"
                                             + totalItem + " items')]"));
 
                     //Assert the total items added
@@ -97,13 +119,16 @@ public class ProductPageActions extends BaseActions {
                 }
 
                 //Log the result
-                Reporter.addStepLog("Add to cart success and the total price is correct: $" + totalPrice);
+                Reporter.addStepLog("Add to cart success and the total price is correct: $" + round(totalPrice, 2));
                 Reporter.addStepLog("Add to cart success and the total item is correct: " + totalItem);
             }
-
+        }
+        else {
+            //The product does not have price
+            Reporter.addStepLog("The product does not have price");
+            captureScreenshot();
         }
     }
-
     private static float round(float value, int places) {
         if (places < 0) throw new IllegalArgumentException();
 
@@ -115,5 +140,9 @@ public class ProductPageActions extends BaseActions {
 
     public void GoToHomePage() throws IOException {
         click(home_page_logo);
+    }
+
+    public void ClickOnCartButton() throws IOException {
+        click(cart_button);
     }
 }

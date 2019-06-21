@@ -17,7 +17,12 @@ public class DealPageSteps extends BaseSteps {
     }
 
     @And("^User view the deal on the \"([^\"]*)\" item$")
-    public void userViewTheItemBy(String dealNumber) throws IOException {
+    public void userViewTheItemBy(int dealNumber) throws IOException {
         dealPageActions.ExecuteClickOnDeal(dealNumber);
+    }
+
+    @And("^User view the product on the item deal$")
+    public void GoToSearchItemNumber() throws Throwable {
+        dealPageActions.ExecuteClickOnDealItem();
     }
 }

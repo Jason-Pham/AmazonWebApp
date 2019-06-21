@@ -2,8 +2,8 @@ package helpers;
 
 import helpers.ReportHelper.PrintLog;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 
 import java.util.concurrent.TimeUnit;
 
@@ -11,7 +11,7 @@ public class Hooks {
 
     public static WebDriver driver;
 
-    @BeforeClass
+    @BeforeTest
     public void openBrowser() {
         String browser = Constant.Browser;
         if (browser == null) {
@@ -30,7 +30,7 @@ public class Hooks {
         driver.manage().deleteAllCookies();
     }
 
-    @AfterClass
+    @AfterTest
     public void embedScreenshot() {
         PrintLog.printLogActionInPage("Close browser: " + Constant.Browser);
         DriverFactory.getInstance().removeDriver();

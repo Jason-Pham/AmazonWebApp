@@ -14,7 +14,7 @@ public class ProductPage extends BaseClass {
     @FindBy(how = How.XPATH, using = "//option[contains(@id, 'native_size_name_') and @data-a-css-class='dropdownAvailable']")
     public static List<WebElement> available_product_sizes;
 
-    @FindBy(how = How.ID, using = "add-to-cart-button")
+    @FindBy(how = How.XPATH, using = "//*[@id='add-to-cart-button' or @id='mbc-buybutton-addtocart-1-announce']")
     public static WebElement add_to_cart_button;
 
     @FindBy(how = How.ID, using = "quantity")
@@ -29,11 +29,12 @@ public class ProductPage extends BaseClass {
     @FindBy(how = How.XPATH, using = "//a[@class='nav-logo-link']")
     public static WebElement home_page_logo;
 
-    @FindBy(how = How.XPATH, using = "//span[@id='priceblock_dealprice' or @id='priceblock_ourprice']")
+    @FindBy(how = How.XPATH, using = "//span[@id='mbc-price-1' or @id='priceblock_dealprice' or @id='priceblock_ourprice']")
     public static List<WebElement> product_price_text;
 
     @FindBy(how = How.XPATH, using = "//span[@class='a-color-price hlb-price a-inline-block a-text-bold']")
     public static List<WebElement> total_price_text;
 
-
+    @FindBy(how = How.ID, using = "hlb-view-cart-announce")
+    public static WebElement cart_button;
 }
