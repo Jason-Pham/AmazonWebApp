@@ -122,6 +122,7 @@ public class ProductPageActions extends BaseActions {
             }
         } else {
             //The product does not have price
+            Assert.fail("The product does not have price");
             Reporter.addStepLog("The product does not have price");
             captureScreenshot();
         }

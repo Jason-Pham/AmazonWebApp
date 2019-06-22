@@ -28,6 +28,6 @@ public class DealPageActions extends BaseActions {
 
     public void ExecuteClickOnDealItem() throws IOException {
         if(deal_items.size() > 0)
-            click(deal_items.get(new Random().nextInt(deal_items.size())));
+            click(deal_items.get(new Random().nextInt(deal_items.size()) - 1));
     }
 }

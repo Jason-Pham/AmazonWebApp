@@ -15,9 +15,8 @@ public class DealPage extends BaseClass {
     @FindBy(how = How.XPATH, using = "//span[contains(text(), 'Top Deals')]")
     public static WebElement sort_dropdown_box;
 
-    @FindBy(how = How.XPATH, using = "//div[@class='a-section a-spacing-none oct-acs-asin-item-container' " +
-            "or @class='a-section a-spacing-none a-inline-block s-position-relative']")
+    @FindBy(how = How.XPATH, using = "//*[@class='a-section a-spacing-none oct-acs-asin-item-container' " +
+            "or @class='a-section a-spacing-none a-inline-block s-position-relative' " +
+            "or @class='s-result-item s-result-card-for-container a-declarative celwidget  ']")
     public static List<WebElement> deal_items;
-
-
 }

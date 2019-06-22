@@ -26,7 +26,7 @@ public class Hooks {
 
         PrintLog.printLogActionInPage("Open browser: " + browser);
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-        driver.manage().window().fullscreen();
+        driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
     }
 
