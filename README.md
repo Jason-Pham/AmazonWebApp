@@ -9,7 +9,7 @@ User just need to type ```mvn test``` and the test runner with start its job.
 2. Run the test runner itself:
 The runners is in this folder:
 
-> \src\test\java\_runners
+  > \src\test\java\_runners
 
 Currently there is just one basic test runner, I will add some more.
 
