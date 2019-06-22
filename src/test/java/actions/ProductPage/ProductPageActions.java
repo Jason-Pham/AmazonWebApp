@@ -44,14 +44,12 @@ public class ProductPageActions extends BaseActions {
     }
 
     public void ExecuteAddToCart(int numberOfProduct) throws IOException {
-        if(numberOfProduct > 0) {
+        if (numberOfProduct > 0) {
             waitForPageToLoad();
             //waitForElement(quantity_dropbox, waitTime);
 
             //Choose the size if the dropbox is available
             ChooseSize();
-
-            Reporter.addStepLog("Product price: " + product_price_text.get(product_price_text.size() - 1).getText());
 
             if (quantity_dropbox_options.size() != 0) {
                 if (numberOfProduct > quantity_dropbox_options.size()) {
@@ -78,12 +76,11 @@ public class ProductPageActions extends BaseActions {
     private void clickAddToCart(int numberOfProduct) throws IOException {
         if (product_price_text.size() > 0) {
             //get the product price
-            String price_text = product_price_text.get(product_price_text.size() - 1).getText().replace("$", "");
-            float price = Float.valueOf(price_text);
-            float add_to_cart_price = numberOfProduct * price;
+            Reporter.addStepLog("Product price: " + product_price_text.get(product_price_text.size() - 1).getText());
 
             //Add to total price and total items
-            totalPrice += add_to_cart_price;
+            totalPrice += numberOfProduct * Float.valueOf(product_price_text.
+                    get(product_price_text.size() - 1).getText().replace("$", ""));
             totalItem += numberOfProduct;
 
             //Add to cart and capture screenshot
@@ -91,7 +88,8 @@ public class ProductPageActions extends BaseActions {
 
             if (proceed_to_checkout.isEmpty()) {
                 //Remove last add price and items from total price
-                totalPrice -= add_to_cart_price;
+                totalPrice -= numberOfProduct * Float.valueOf(product_price_text.
+                        get(product_price_text.size() - 1).getText().replace("$", ""));
                 totalItem -= numberOfProduct;
 
                 //Assert failed and log
@@ -122,13 +120,13 @@ public class ProductPageActions extends BaseActions {
                 Reporter.addStepLog("Add to cart success and the total price is correct: $" + round(totalPrice, 2));
                 Reporter.addStepLog("Add to cart success and the total item is correct: " + totalItem);
             }
-        }
-        else {
+        } else {
             //The product does not have price
             Reporter.addStepLog("The product does not have price");
             captureScreenshot();
         }
     }
+
     private static float round(float value, int places) {
         if (places < 0) throw new IllegalArgumentException();
 
