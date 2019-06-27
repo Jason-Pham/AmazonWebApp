@@ -4,7 +4,7 @@ This is a framework to test Amazon AU web app page. It can help manual tester or
 ## Usage
 ### There are 2 ways to run this test
 1. Run with Maven:
-User just need to type ```mvn test``` and the test runner with start its job.
+user just need to type ```mvn test``` and the test runner with start its job.
 
 2. Run the test runner itself:
 The runners is in this folder:
