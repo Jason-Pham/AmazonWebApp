@@ -11,7 +11,7 @@ The runners is in this folder:
 
   > \src\test\java\_runners
 
-Currently there is just one basic test runner, I will add some more.
+Currently there is just one basic test runner, the test cover will be increase by time.
 
 ### Some notes for this framework
 1. This framework required Java 8+ and Chrome to run. It can work on Mac, Windows, Linux as long as it has Java and Chrome browser
