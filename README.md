@@ -1,4 +1,4 @@
-# Amazon web app testing
+# Amazon web app test
 This is a framework to test Amazon AU web app page. It can help manual tester or anyone who need regression test for basic work flow of this e-commerce service.
 
 ## Usage
