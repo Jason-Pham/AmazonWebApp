@@ -17,6 +17,11 @@ Currently there is just one basic test runner, I will add some more.
 1. This framework required Java 8+ and Chrome to run. It can work on Mac, Windows, Linux as long as it has Java and Chrome browser
 2. There is no web driver attached, the framework will pickup the best Chromedriver version for your Chrome.
 
+## Report
+1. The framework will create the report base on the cucumber features that were run, the steps is automatically generated based on  cucumber scenarios
+2. Each steps of report would have one or more images attached to it
+3. When a test is failed, report will show the error message
+
 ## Release Notes
 ### Release version v1.0
 The basic user flow from home page, search page, deal page, product page and cart page is implement in this release.
