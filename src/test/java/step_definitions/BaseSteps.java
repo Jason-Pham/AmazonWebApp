@@ -5,6 +5,7 @@ import actions.DealPage.DealPageActions;
 import actions.HomePage.HomePageActions;
 import actions.ProductPage.ProductPageActions;
 import actions.SearchPage.SearchPageActions;
+import actions.SignInPage.SignInPageActions;
 import helpers.Hooks;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -13,6 +14,7 @@ import page_objects.DealPage.DealPage;
 import page_objects.HomePage.HomePage;
 import page_objects.ProductPage.ProductPage;
 import page_objects.SearchPage.SearchPage;
+import page_objects.SignInPage.SignInPage;
 
 public class BaseSteps {
 
@@ -22,6 +24,7 @@ public class BaseSteps {
     protected ProductPageActions productPageActions = new ProductPageActions();
     protected SearchPageActions searchPageActions = new SearchPageActions();
     protected CartPageActions cartPageActions = new CartPageActions();
+    protected SignInPageActions signInPageActions = new SignInPageActions();
 
     public BaseSteps() {
         baseStepsDriver = Hooks.driver;
@@ -30,5 +33,6 @@ public class BaseSteps {
         PageFactory.initElements(baseStepsDriver, ProductPage.class);
         PageFactory.initElements(baseStepsDriver, SearchPage.class);
         PageFactory.initElements(baseStepsDriver, CartPage.class);
+        PageFactory.initElements(baseStepsDriver, SignInPage.class);
     }
 }

@@ -33,6 +33,9 @@ public class CartPageActions extends BaseActions {
         float total_price_on_cart = 0;
 
         waitForPageToLoad();
+        waitForElements(item_quantities, waitTime);
+        waitForElements(item_prices, waitTime);
+        waitForElements(total_prices, waitTime);
 
         for (int i =0; i < item_prices.size(); i++)
             total_price_on_cart += Float.valueOf(item_quantities.get(i).getText())

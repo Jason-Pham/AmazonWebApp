@@ -15,12 +15,13 @@ public class CartPageSteps extends BaseSteps {
     @And("^User delete the \"([^\"]*)\" item$")
     public void DeleteTheItemFromCart(int cartItemNumber) throws Throwable {
         cartPageActions.DeleteItem(cartItemNumber);
-        Assert.assertTrue(cartPageActions.checkPriceOnCart());
+        //Assert.assertTrue(cartPageActions.checkPriceOnCart());
         Assert.assertTrue(cartPageActions.checkQuantityOnCart());
     }
 
     @And("^User click \"([^\"]*)\"$")
     public void ClickProceedToCheckout(String checkoutStep) throws Throwable {
         cartPageActions.ClickOnProceedToCheckoutButton();
+        Assert.assertTrue(signInPageActions.userIsInSignInPage());
     }
 }

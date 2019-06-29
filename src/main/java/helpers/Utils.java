@@ -10,13 +10,14 @@ import org.testng.Assert;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 
 public class Utils {
     public static float totalPrice = 0;
     public static int totalItem = 0;
-    private static long waitTime = 15;
+    public static long waitTime = 15;
 
     public static void captureScreenshot() throws IOException {
         Reporter.addScreenCaptureFromPath(ScreenshotHelper.takeScreenshot(Hooks.driver,
@@ -32,6 +33,18 @@ public class Utils {
         } catch (NullPointerException | WebDriverException e) {
             captureScreenshot();
             Reporter.addStepLog("Waiting for this element is failed: " + element.getText());
+            Assert.fail();
+        }
+    }
+
+    public static void waitForElements(List<WebElement> elements, long time) throws IOException {
+        try {
+            WebDriverWait wait = new WebDriverWait(Hooks.driver, time);
+            for (WebElement element : elements)
+                wait.until(elementToBeClickable(element));
+        } catch (NullPointerException | WebDriverException e) {
+            captureScreenshot();
+            Reporter.addStepLog("Waiting for this element is failed: " + elements.get(0).getText());
             Assert.fail();
         }
     }

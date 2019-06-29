@@ -14,7 +14,7 @@ Feature: Amazon shopping
       | Deal number | Number of items to add to cart |
       | 5           | 3                              |
       | 4           | 2                              |
-      | 6           | 5                             |
+      | 6           | 5                              |
       | 3           | 2                              |
 
   @Search @AddToCart
