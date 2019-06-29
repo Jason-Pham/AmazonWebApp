@@ -33,6 +33,7 @@ The Amazon AU website has many user flows and sometimes there are some changes i
 2. Implement the way to dynamic tagging for scenarios, user can run any tags at any time.
 3. Implement the parrallel test to decrease testing time as scenario number would be growing.
 4. Implement console logs for more inside debug.
+5. Implement support for other Amazon like US, UK or JP for the same code base.
 
 ## Demo
 https://drive.google.com/file/d/1knmOK-KmqwUiSfGNcikHlGc0rzUQt_2J/view?usp=sharing
