@@ -14,7 +14,7 @@ Feature: Amazon shopping
       | Deal number | Number of items to add to cart |
       | 5           | 3                              |
       | 4           | 2                              |
-      | 6           | 10                             |
+      | 6           | 5                             |
       | 3           | 2                              |
 
   @Search @AddToCart
@@ -26,7 +26,7 @@ Feature: Amazon shopping
     And User adds "1" items to cart
     Then User go back to home page
     And User search for "AAA Batteries"
-    And User view the product on the "2" item search
+    And User view the product on the "1" item search
     And User adds "2" items to cart
     When User go to cart
     And User edit the "1" item quantity - set to "1"

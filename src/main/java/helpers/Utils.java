@@ -1,7 +1,6 @@
 package helpers;
 
 import com.vimalselvam.cucumber.listener.Reporter;
-import helpers.ReportHelper.PrintLog;
 import helpers.ReportHelper.ScreenshotHelper;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriverException;

@@ -16,4 +16,16 @@ public class CartPage extends BaseClass {
 
     @FindBy(how = How.NAME, using = "proceedToCheckout")
     public static WebElement proceed_to_checkout_button;
+
+    @FindBy(how = How.XPATH, using = "//span[@class='a-size-medium a-color-price sc-price sc-white-space-nowrap  sc-price-sign' " +
+                                    "or @class = 'a-size-medium a-color-price sc-price sc-white-space-nowrap sc-price-sign']")
+    public static List<WebElement> total_prices;
+
+    @FindBy(how = How.XPATH, using = "//span[@class = 'a-size-medium a-color-price sc-price sc-white-space-nowrap sc-product-price sc-price-sign a-text-bold']")
+    public static List<WebElement> item_prices;
+
+    @FindBy(how = How.CLASS_NAME, using = "a-dropdown-prompt")
+    public static List<WebElement> item_quantities;
+
+
 }

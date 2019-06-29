@@ -15,8 +15,6 @@ public class HomePageSteps extends BaseSteps {
             baseStepsDriver.navigate().to(Constant.Environment);
         else
             baseStepsDriver.navigate().to(UrlEnvInfo.amazon_au_prod);
-
-        System.out.println("Open Liquid home page browser id: " + baseStepsDriver);
     }
 
     @And("^User search for \"([^\"]*)\"$")

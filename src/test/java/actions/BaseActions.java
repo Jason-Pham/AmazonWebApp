@@ -1,6 +1,5 @@
 package actions;
 
-import helpers.DriverFactory;
 import helpers.Hooks;
 import org.openqa.selenium.WebDriver;
 
