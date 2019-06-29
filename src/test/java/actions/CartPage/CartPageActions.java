@@ -16,14 +16,14 @@ public class CartPageActions extends BaseActions {
         click(delete_buttons.get(numberOfItem - 1));
     }
 
-    public void ChangeQuantity(int numberOfItem, int quantity) throws IOException{
+    public void ChangeQuantity(int numberOfItem, int quantity) throws IOException {
         click(quantity_dropbox.get(numberOfItem - 1));
 
         click(baseActionsDriver.findElement
                 (By.xpath("((//div[@class='a-popover a-dropdown a-dropdown-common a-declarative'])" +
-                        "["+ numberOfItem +"]" +
+                        "[" + numberOfItem + "]" +
                         "//child::li)" +
-                        "["+quantity+"]")));
+                        "[" + quantity + "]")));
 
         Reporter.addStepLog("Change the product number: " + numberOfItem + " to: " + quantity + " item(s)");
         captureScreenshot();
@@ -37,9 +37,9 @@ public class CartPageActions extends BaseActions {
         waitForElements(item_prices, waitTime);
         waitForElements(total_prices, waitTime);
 
-        for (int i =0; i < item_prices.size(); i++)
+        for (int i = 0; i < item_prices.size(); i++)
             total_price_on_cart += Float.valueOf(item_quantities.get(i).getText())
-                                    * Float.valueOf(item_prices.get(i).getText().replace("$", ""));
+                    * Float.valueOf(item_prices.get(i).getText().replace("$", ""));
 
         for (WebElement total_price : total_prices)
             if (total_price_on_cart != Float.valueOf(total_price.getText().replace("$", ""))) {
@@ -65,7 +65,7 @@ public class CartPageActions extends BaseActions {
 
         List<WebElement> total_quantities_on_cart = baseActionsDriver.findElements(By.xpath("//span[contains(text(), '" + total_quantity_on_cart + " item') or contains(text(), '" + total_quantity_on_cart + " items')]"));
 
-        if(total_quantities_on_cart.size() == 0){
+        if (total_quantities_on_cart.size() == 0) {
             Reporter.addStepLog("The total quantity on the cart is NOT correct: $" + total_quantity_on_cart);
             captureScreenshot();
             return false;

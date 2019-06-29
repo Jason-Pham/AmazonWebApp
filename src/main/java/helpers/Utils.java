@@ -88,7 +88,7 @@ public class Utils {
         }
     }
 
-    public static void waitForPageToLoad(){
+    public static void waitForPageToLoad() {
         new WebDriverWait(Hooks.driver, waitTime + 15).until(
                 webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
     }

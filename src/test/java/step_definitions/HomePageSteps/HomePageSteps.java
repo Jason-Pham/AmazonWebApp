@@ -11,7 +11,7 @@ public class HomePageSteps extends BaseSteps {
 
     @Given("^User is opening Amazon home page$")
     public void userIsOpeningAmazonHomePage() {
-        if(Constant.Environment != null)
+        if (Constant.Environment != null)
             baseStepsDriver.navigate().to(Constant.Environment);
         else
             baseStepsDriver.navigate().to(UrlEnvInfo.amazon_au_prod);

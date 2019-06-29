@@ -1,10 +1,6 @@
 package step_definitions.SearchPageSteps;
 
 import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.When;
-import helpers.Constant;
-import helpers.TestData.UrlEnvInfo;
 import step_definitions.BaseSteps;
 
 public class SearchPageSteps extends BaseSteps {

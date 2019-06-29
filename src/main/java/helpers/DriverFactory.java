@@ -5,18 +5,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-public class DriverFactory
-{
+class DriverFactory {
     //protected WebDriver driver;
 
-    private DriverFactory()
-    {
+    private DriverFactory() {
         //Do-nothing..Do not allow to initializethis class from outside
     }
+
     private static DriverFactory instance = new DriverFactory();
 
-    static DriverFactory getInstance()
-    {
+    static DriverFactory getInstance() {
         return instance;
     }
 
