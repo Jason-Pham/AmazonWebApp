@@ -18,7 +18,10 @@ Currently there is just one basic test runner.
 2. There is no web driver attached, the framework will pickup the best Chromedriver version for your Chrome.
 
 ## Report
-1. The framework will create the report base on the cucumber features that were run, the steps is automatically generated based on  cucumber scenarios
+1. The framework will create the report base on the cucumber features that were run, the steps is automatically generated based on  cucumber scenarios, the report is located here:
+
+ > \target\Amazon-reports\report.html
+
 2. Each steps of report would have one or more images attached to it
 3. When a test is failed, report will show the error message
 
