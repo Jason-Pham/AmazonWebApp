@@ -18,18 +18,21 @@ Feature: Amazon shopping
       | 3           | 2                              |
 
   @Search @AddToCart
-  Scenario: Search on Amazon
+  Scenario Outline: Search on Amazon
     Given User is opening Amazon home page
-    And User search for "AAA Batteries"
-    And User sort the search items by "Featured"
-    And User view the product on the "7" item search
-    And User adds "1" items to cart
+    And User search for "<searchText>"
+    And User sort the search items by "<sortType>"
+    And User view the product on the "<searchItemNumber>" item search
+    And User adds "<numberOfProduct>" items to cart
     Then User go back to home page
-    And User search for "AAA Batteries"
-    And User view the product on the "1" item search
-    And User adds "2" items to cart
+    And User search for "<searchText>"
+    And User view the product on the "<searchItemNumber1>" item search
+    And User adds "<numberOfProduct1>" items to cart
     When User go to cart
-    And User edit the "1" item quantity - set to "1"
-    And User edit the "2" item quantity - set to "3"
-    And User delete the "1" item
-    Then User click "Proceed to Checkout"
+    And User edit the "<numberOfItem>" item quantity - set to "<quantity>"
+    And User edit the "<numberOfItem1>" item quantity - set to "<quantity1>"
+    And User delete the "<cartItemNumber>" item
+    Then User click "<checkoutStep>"
+    Examples:
+      | searchText    | sortType | searchItemNumber | numberOfProduct | searchItemNumber1 | numberOfProduct1 | numberOfItem | quantity | numberOfItem1 | quantity1 | cartItemNumber | checkoutStep        |
+      | AAA Batteries | Featured | 7                | 1               | 1                 | 2                | 1            | 1        | 2             | 3         | 1              | Proceed to Checkout |
