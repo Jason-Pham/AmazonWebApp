@@ -17,13 +17,12 @@ public class DealPageActions extends BaseActions {
     }
 
     public void ExecuteClickOnSortButtonType(String sortType) throws IOException {
-        click(baseActionsDriver.findElement(By.xpath("//a[contains(text(), '" + sortType + "')]")));
+        click(baseActionsDriver.findElement(By.xpath("(//*[contains(text(), '" + sortType + "')])[3]")));
     }
 
     public void ExecuteClickOnDeal(int dealNumber) throws IOException {
         click(baseActionsDriver.findElement(
-                By.xpath("((//div[contains(@id, '101_dealView_')])//child::a[contains(text(), " +
-                        "'View Deal')])[" + dealNumber + "]")));
+                By.xpath("(//*[contains(@data-testid, 'deal-card')])[" + dealNumber + "]")));
     }
 
     public void ExecuteClickOnDealItem() throws IOException {

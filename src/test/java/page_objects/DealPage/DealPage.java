@@ -9,10 +9,10 @@ import java.util.List;
 
 public class DealPage extends BaseClass {
 
-    @FindBy(how = How.XPATH, using = "//a[contains(text(), 'Discount - High to Low')]")
+    @FindBy(how = How.XPATH, using = "(//*[contains(text(), 'Discount - high to low')])[3]")
     public static WebElement sort_discount_high_to_low;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(), 'Top Deals')]")
+    @FindBy(how = How.XPATH, using = "(//*[contains(text(), 'Sort by')])[2]")
     public static WebElement sort_dropdown_box;
 
     @FindBy(how = How.XPATH, using = "//*[@class='a-section a-spacing-none oct-acs-asin-item-container' " +

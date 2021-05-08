@@ -26,10 +26,10 @@ public class ProductPage extends BaseClass {
     @FindBy(how = How.ID, using = "hlb-ptc-btn-native")
     public static List<WebElement> proceed_to_checkout;
 
-    @FindBy(how = How.XPATH, using = "//a[@class='nav-logo-link']")
+    @FindBy(how = How.XPATH, using = "//*[@class='nav-logo-sprites']")
     public static WebElement home_page_logo;
 
-    @FindBy(how = How.XPATH, using = "//span[@id='mbc-price-1' or @id='priceblock_dealprice' or @id='priceblock_ourprice']")
+    @FindBy(how = How.XPATH, using = "//*[@id='mbc-price-1' or @id='priceblock_dealprice' or @id='priceblock_ourprice']")
     public static List<WebElement> product_price_text;
 
     @FindBy(how = How.XPATH, using = "//span[@class='a-color-price hlb-price a-inline-block a-text-bold']")
