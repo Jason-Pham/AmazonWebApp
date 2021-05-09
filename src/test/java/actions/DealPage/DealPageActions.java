@@ -22,7 +22,7 @@ public class DealPageActions extends BaseActions {
 
     public void ExecuteClickOnDeal(int dealNumber) throws IOException {
         click(baseActionsDriver.findElement(
-                By.xpath("(//*[contains(@data-testid, 'deal-card')])[" + dealNumber + "]")));
+                By.xpath("(//*[contains(@class, 'a-spacing-mini')])[" + dealNumber + "]")));
     }
 
     public void ExecuteClickOnDealItem() throws IOException {
