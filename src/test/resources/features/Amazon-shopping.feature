@@ -35,5 +35,5 @@ Feature: Amazon shopping
     And User delete the "<cartItemNumber>" item
     Then User click "<checkoutStep>"
     Examples:
-      | searchText    | sortType | searchItemNumber | numberOfProduct | searchItemNumber1 | numberOfProduct1 | numberOfItem | quantity | numberOfItem1 | quantity1 | cartItemNumber | checkoutStep        |
-      | AAA Batteries | Featured | 7                | 1               | 1                 | 2                | 1            | 1        | 2             | 3         | 1              | Proceed to Checkout |
+      | searchText            | sortType | searchItemNumber | numberOfProduct | searchItemNumber1 | numberOfProduct1 | numberOfItem | quantity | numberOfItem1 | quantity1 | cartItemNumber | checkoutStep        |
+      | Duracell AA Batteries | Featured | 1                | 1               | 1                 | 2                | 1            | 1        | 2             | 3         | 1              | Proceed to Checkout |

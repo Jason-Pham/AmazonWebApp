@@ -1,6 +1,6 @@
 package step_definitions.SearchPageSteps;
 
-import cucumber.api.java.en.And;
+import io.cucumber.java.en.And;
 import step_definitions.BaseSteps;
 
 public class SearchPageSteps extends BaseSteps {

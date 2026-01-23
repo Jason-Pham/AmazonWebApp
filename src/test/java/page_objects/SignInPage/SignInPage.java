@@ -8,15 +8,20 @@ import page_objects.BaseClass;
 import java.util.List;
 
 public class SignInPage extends BaseClass {
+
+    public SignInPage(org.openqa.selenium.WebDriver driver) {
+        org.openqa.selenium.support.PageFactory.initElements(driver, this);
+    }
+
     @FindBy(how = How.XPATH, using = "//h1[contains(text(), 'Sign-In')]")
-    public static List<WebElement> sign_in_text;
+    public List<WebElement> sign_in_text;
 
     @FindBy(how = How.XPATH, using = "//input[@id = 'ap_email']")
-    public static List<WebElement> email_input;
+    public List<WebElement> email_input;
 
     @FindBy(how = How.XPATH, using = "//input[@id = 'ap_password']")
-    public static List<WebElement> password_input;
+    public List<WebElement> password_input;
 
     @FindBy(how = How.XPATH, using = "//input[@id = 'signInSubmit']")
-    public static List<WebElement> sign_in_button;
+    public List<WebElement> sign_in_button;
 }

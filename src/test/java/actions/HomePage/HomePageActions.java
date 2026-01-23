@@ -7,19 +7,25 @@ import java.io.IOException;
 
 import static helpers.Utils.click;
 import static helpers.Utils.sendKeys;
-import static page_objects.HomePage.HomePage.*;
 
 public class HomePageActions extends BaseActions {
+
+    page_objects.HomePage.HomePage homePage = new page_objects.HomePage.HomePage(baseActionsDriver);
+
     public boolean UserIsInHomePage() {
-        return home_page_banners.size() != 0;
+        return homePage.home_page_banners.size() != 0;
     }
 
     public void ExecuteClickOnSignInLinkWithText(String text) throws IOException {
-        click(baseActionsDriver.findElement(By.linkText(text)));
+        try {
+            click(baseActionsDriver.findElement(By.linkText(text)));
+        } catch (Exception e) {
+            click(baseActionsDriver.findElement(By.xpath("//*[contains(text(), '" + text + "')]")));
+        }
     }
 
     public void Search(String searchText) throws IOException {
-        sendKeys(search_box, searchText);
-        click(search_button);
+        sendKeys(homePage.search_box, searchText);
+        click(homePage.search_button);
     }
 }

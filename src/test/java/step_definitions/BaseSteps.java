@@ -27,12 +27,7 @@ public class BaseSteps {
     protected SignInPageActions signInPageActions = new SignInPageActions();
 
     public BaseSteps() {
-        baseStepsDriver = Hooks.driver;
-        PageFactory.initElements(baseStepsDriver, HomePage.class);
-        PageFactory.initElements(baseStepsDriver, DealPage.class);
-        PageFactory.initElements(baseStepsDriver, ProductPage.class);
-        PageFactory.initElements(baseStepsDriver, SearchPage.class);
-        PageFactory.initElements(baseStepsDriver, CartPage.class);
-        PageFactory.initElements(baseStepsDriver, SignInPage.class);
+        baseStepsDriver = helpers.DriverFactory.getInstance().getDriver();
+
     }
 }

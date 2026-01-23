@@ -8,12 +8,17 @@ import page_objects.BaseClass;
 import java.util.List;
 
 public class HomePage extends BaseClass {
-    @FindBy(how = How.XPATH, using = "//div[@class='cropped-image-map-center-alignment']")
-    public static List<WebElement> home_page_banners;
+
+    public HomePage(org.openqa.selenium.WebDriver driver) {
+        org.openqa.selenium.support.PageFactory.initElements(driver, this);
+    }
+
+    @FindBy(how = How.ID, using = "desktop-banner")
+    public List<WebElement> home_page_banners;
 
     @FindBy(how = How.XPATH, using = "//input[@id='twotabsearchtextbox']")
-    public static WebElement search_box;
+    public WebElement search_box;
 
-    @FindBy(how = How.XPATH, using = "//input[@type='submit' and @class='nav-input']")
-    public static WebElement search_button;
+    @FindBy(how = How.ID, using = "nav-search-submit-button")
+    public WebElement search_button;
 }

@@ -1,9 +1,9 @@
 package step_definitions.ProductPageSteps;
 
-import com.vimalselvam.cucumber.listener.Reporter;
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
+import helpers.ReportHelper.PrintLog;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.testng.Assert;
 import step_definitions.BaseSteps;
 
@@ -24,6 +24,6 @@ public class ProductPageSteps extends BaseSteps {
     public void userGoBackToHomePage() throws IOException {
         productPageActions.GoToHomePage();
         Assert.assertTrue(homePageActions.UserIsInHomePage(), "User is in Home Page");
-        Reporter.addStepLog("User is in Home Page");
+        PrintLog.printLogActionInPage("User is in Home Page");
     }
 }

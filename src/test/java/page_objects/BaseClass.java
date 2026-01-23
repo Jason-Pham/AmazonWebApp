@@ -8,6 +8,6 @@ public class BaseClass {
     private WebDriver baseClassesDriver;
 
     public BaseClass() {
-        baseClassesDriver = Hooks.driver;
+        baseClassesDriver = helpers.DriverFactory.getInstance().getDriver();
     }
 }

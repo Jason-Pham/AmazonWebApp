@@ -9,14 +9,18 @@ import java.util.List;
 
 public class DealPage extends BaseClass {
 
+    public DealPage(org.openqa.selenium.WebDriver driver) {
+        org.openqa.selenium.support.PageFactory.initElements(driver, this);
+    }
+
     @FindBy(how = How.XPATH, using = "(//*[contains(text(), 'Discount - high to low')])[3]")
-    public static WebElement sort_discount_high_to_low;
+    public WebElement sort_discount_high_to_low;
 
     @FindBy(how = How.XPATH, using = "(//*[contains(text(), 'Sort by')])[2]")
-    public static WebElement sort_dropdown_box;
+    public WebElement sort_dropdown_box;
 
     @FindBy(how = How.XPATH, using = "//*[@class='a-section a-spacing-none oct-acs-asin-item-container' " +
             "or @class='a-section a-spacing-none a-inline-block s-position-relative' " +
             "or @class='s-result-item s-result-card-for-container a-declarative celwidget  ']")
-    public static List<WebElement> deal_items;
+    public List<WebElement> deal_items;
 }

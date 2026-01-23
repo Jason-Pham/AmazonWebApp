@@ -7,6 +7,6 @@ public class BaseActions {
     protected WebDriver baseActionsDriver;
 
     public BaseActions() {
-        baseActionsDriver = Hooks.driver;
+        baseActionsDriver = helpers.DriverFactory.getInstance().getDriver();
     }
 }

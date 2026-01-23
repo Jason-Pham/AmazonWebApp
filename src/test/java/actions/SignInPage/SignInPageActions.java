@@ -2,10 +2,12 @@ package actions.SignInPage;
 
 import actions.BaseActions;
 
-import static page_objects.SignInPage.SignInPage.*;
-
 public class SignInPageActions extends BaseActions {
+
+    page_objects.SignInPage.SignInPage signInPage = new page_objects.SignInPage.SignInPage(baseActionsDriver);
+
     public boolean userIsInSignInPage() {
-        return sign_in_text.size() != 0 && email_input.size() != 0 && password_input.size() != 0 && sign_in_button.size() != 0;
+        return signInPage.sign_in_text.size() != 0 && signInPage.email_input.size() != 0
+                && signInPage.password_input.size() != 0 && signInPage.sign_in_button.size() != 0;
     }
 }

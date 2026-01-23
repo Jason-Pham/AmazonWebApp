@@ -9,8 +9,6 @@ import java.util.concurrent.TimeUnit;
 
 public class Hooks {
 
-    public static WebDriver driver;
-
     @BeforeTest
     public void openBrowser() {
         String browser = Constant.Browser;
@@ -22,7 +20,7 @@ public class Hooks {
             }
         }
 
-        driver = DriverFactory.getInstance().getDriver();
+        WebDriver driver = DriverFactory.getInstance().getDriver();
 
         PrintLog.printLogActionInPage("Open browser: " + browser);
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
