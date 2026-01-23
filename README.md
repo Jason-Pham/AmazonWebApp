@@ -1,42 +1,55 @@
-# Amazon web app test
-This is a framework to test Amazon AU web app page. It can help manual tester or anyone who need regression test for basic work flow of this e-commerce service.
+# Amazon Web App Automation Framework
 
-## Usage
-### There are 2 ways to run this test
-1. Run with Maven:
-user just need to type ```mvn test``` and the test runner with start its job.
+A professional-grade BDD automation framework for testing Amazon's e-commerce platform. Built with **Java**, **Selenium**, **Cucumber**, and **TestNG**.
 
-2. Run the test runner itself:
-The runners is in this folder:
+## 🚀 Key Features
+- **Hybrid Framework**: Combines BDD (Cucumber) with Page Object Model (POM) for maximum readability and maintainability.
+- **Parallel Execution**: Thread-safe driver management using `ThreadLocal` allows running scenarios in parallel without session conflict.
+- **CI/CD Integrated**: GitHub Actions workflow configured for automated testing on every push/PR.
+- **Dockerized Execution**: CI runs tests in a containerized Selenium Grid environment.
+- **Smart Bot Detection**: Automated handling of Amazon's bot detection pages (CAPTCHA/Continue Shopping) to ensure test stability.
+- **Robust Error Handling**: Graceful skipping of out-of-stock items and resilient locators.
 
-  > \src\test\java\_runners
+## 🛠 Tech Stack
+- **Language**: Java 17
+- **Web Driver**: Selenium WebDriver 4
+- **BDD**: Cucumber 7
+- **Runner**: TestNG
+- **Build Tool**: Maven
+- **CI/CD**: GitHub Actions
 
-Currently there is just one basic test runner.
+## 📋 Prerequisites
+- Java JDK 17+
+- Maven 3.8+
+- Google Chrome
 
-### Some notes for this framework
-1. This framework required Java 8+ and Chrome to run. It can work on Mac, Windows, Linux as long as it has Java and Chrome browser
-2. There is no web driver attached, the framework will pickup the best Chromedriver version for your Chrome.
+## 🏃♂️ How to Run
 
-## Report
-1. The framework will create the report base on the cucumber features that were run, the steps is automatically generated based on  cucumber scenarios, the report is located here:
+### Run all tests
+```bash
+mvn test
+```
 
- > \target\Amazon-reports\report.html
+### Run specific tags
+```bash
+mvn test -Dcucumber.filter.tags="@Search"
+```
 
-2. Each steps of report would have one or more images attached to it
-3. When a test is failed, report will show the error message
+### Run in Headless Mode (CI style)
+```bash
+mvn test -DHeadless=true
+```
 
-## Release Notes
-### Release version v1.0
-The basic user flow from home page, search page, deal page, product page and cart page is implement in this release.
-Framework now have the core pages, features and report for each release.
-The Amazon AU website has many user flows and sometimes there are some changes in the DOM. We would try to cover as much changes as we can forseen but gliches could happen.
+## 📊 Reporting
+The framework generates detailed HTML reports after execution:
+- Path: `target/Amazon-reports/SparkReport/Spark.html`
+- Includes screenshots for every step and failure.
 
-## What's next
-1. Implement the Firefox browser option.
-2. Implement the way to dynamic tagging for scenarios, user can run any tags at any time.
-3. Implement the parrallel test to decrease testing time as scenario number would be growing.
-4. Implement console logs for more inside debug.
-5. Implement support for other Amazon like US, UK or JP for the same code base.
+## 🏗 Architecture
+- **DriverFactory**: Singleton pattern with `ThreadLocal` for safe parallelization.
+- **Page Objects**: Separated locators and web elements.
+- **Actions**: Encapsulated business logic and interactions.
+- **Steps**: Cucumber glue code connecting Feature files to Actions.
 
-## Demo
-https://drive.google.com/file/d/1knmOK-KmqwUiSfGNcikHlGc0rzUQt_2J/view?usp=sharing
+---
+*Created by [Your Name] - Showcasing Professional SDET Skills*
