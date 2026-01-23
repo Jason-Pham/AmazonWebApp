@@ -8,7 +8,7 @@ import actions.SearchPage.SearchPageActions;
 import actions.SignInPage.SignInPageActions;
 import org.openqa.selenium.WebDriver;
 
-public class BaseSteps {
+public abstract class BaseSteps {
 
     protected WebDriver driver;
     protected HomePageActions homePageActions = new HomePageActions();
@@ -19,6 +19,6 @@ public class BaseSteps {
     protected SignInPageActions signInPageActions = new SignInPageActions();
 
     public BaseSteps() {
-        driver = helpers.DriverFactory.getInstance().getDriver();
+        this.driver = helpers.DriverFactory.getInstance().getDriver();
     }
 }

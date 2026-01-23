@@ -2,10 +2,10 @@ package actions;
 
 import org.openqa.selenium.WebDriver;
 
-public class BaseActions {
+public abstract class BaseActions {
     protected WebDriver driver;
 
     public BaseActions() {
-        driver = helpers.DriverFactory.getInstance().getDriver();
+        this.driver = helpers.DriverFactory.getInstance().getDriver();
     }
 }

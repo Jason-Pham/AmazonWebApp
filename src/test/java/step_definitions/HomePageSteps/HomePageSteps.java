@@ -15,6 +15,8 @@ public class HomePageSteps extends BaseSteps {
             driver.navigate().to(Constant.Environment);
         else
             driver.navigate().to(UrlEnvInfo.amazon_au_prod);
+
+        homePageActions.CheckForBotDetection();
     }
 
     @And("^User search for \"([^\"]*)\"$")

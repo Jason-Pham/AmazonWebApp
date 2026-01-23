@@ -42,9 +42,11 @@ public class ProductPageActions extends BaseActions {
 
     private void ChooseQuantity(int numberOfProduct) throws IOException {
         try {
-            click(productPage.quantity_dropbox);
-            click(driver
-                    .findElement(By.xpath("//select[@id='quantity']//child::option[" + numberOfProduct + "]")));
+            if (productPage.quantity_dropbox_options.size() > 0) {
+                click(productPage.quantity_dropbox);
+                click(driver
+                        .findElement(By.xpath("//select[@id='quantity']//child::option[" + numberOfProduct + "]")));
+            }
         } catch (Throwable e) {
             PrintLog.printLogActionInPage(
                     "Could not select quantity (likely hidden or overlay). Proceeding with default quantity.");
@@ -54,7 +56,13 @@ public class ProductPageActions extends BaseActions {
     public void ExecuteAddToCart(int numberOfProduct) throws IOException {
         if (numberOfProduct > 0) {
             waitForPageToLoad();
-            // waitForElement(productPage.quantity_dropbox, waitTime);
+
+            // Check if product is out of stock
+            if (driver.findElements(By.id("add-to-cart-button")).isEmpty() &&
+                    driver.findElements(By.id("mbc-buybutton-addtocart-1-announce")).isEmpty()) {
+                PrintLog.printLogActionInPage("Product is out of stock or Add to Cart button is missing.");
+                throw new org.testng.SkipException("Skipping test: Product is out of stock.");
+            }
 
             // Choose the size if the dropbox is available
             ChooseSize();

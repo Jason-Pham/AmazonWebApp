@@ -16,6 +16,13 @@ public class HomePageActions extends BaseActions {
         return homePage.home_page_banners.size() != 0;
     }
 
+    public void CheckForBotDetection() {
+        if (homePage.bot_detection_elements.size() > 0) {
+            helpers.ReportHelper.PrintLog.printLogActionInPage("Bot detection detected! Skipping test.");
+            throw new org.testng.SkipException("Amazon bot detection triggered. Skipping scenario.");
+        }
+    }
+
     public void ExecuteClickOnSignInLinkWithText(String text) throws IOException {
         try {
             click(driver.findElement(By.linkText(text)));

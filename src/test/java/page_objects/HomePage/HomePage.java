@@ -21,4 +21,7 @@ public class HomePage extends BaseClass {
 
     @FindBy(how = How.ID, using = "nav-search-submit-button")
     public WebElement search_button;
+
+    @FindBy(how = How.XPATH, using = "//button[text()='Continue shopping'] | //a[text()='Try different image'] | //form[@action='/errors/validateCaptcha']")
+    public List<WebElement> bot_detection_elements;
 }

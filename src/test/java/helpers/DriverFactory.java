@@ -17,26 +17,18 @@ public class DriverFactory {
         return instance;
     }
 
-    private ThreadLocal<WebDriver> driver;
-
-    {
-        // thread local driver object for webdriver
-        driver = ThreadLocal.withInitial(() -> {
-            // WebDriverManager.chromedriver().setup(); // Not needed in Selenium 4
-            ChromeOptions options = new ChromeOptions();
-            if (Constant.Headless)
-                options.addArguments("--headless");
-            // options.addArguments("--remote-debugging-port=9222");
-            options.addArguments("--incognito");
-            options.addArguments("--no-sandbox");
-            options.addArguments("--window-size=1920,1080");
-            // options.addArguments("–disable-dev-shm-usage");
-            options.addArguments("start-maximized");
-            options.addArguments("--disable-gpu");
-            options.addArguments("--disable-setuid-sandbox");
-            return new ChromeDriver(options); // can be replaced with other browser drivers
-        });
-    }
+    private static ThreadLocal<WebDriver> driver = ThreadLocal.withInitial(() -> {
+        ChromeOptions options = new ChromeOptions();
+        if (Constant.Headless)
+            options.addArguments("--headless");
+        options.addArguments("--incognito");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--window-size=1920,1080");
+        options.addArguments("start-maximized");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--disable-setuid-sandbox");
+        return new ChromeDriver(options);
+    });
 
     public WebDriver getDriver() // call this method to get the driver object and launch the browser
     {
