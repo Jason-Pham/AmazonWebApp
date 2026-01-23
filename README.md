@@ -50,6 +50,3 @@ The framework generates detailed HTML reports after execution:
 - **Page Objects**: Separated locators and web elements.
 - **Actions**: Encapsulated business logic and interactions.
 - **Steps**: Cucumber glue code connecting Feature files to Actions.
-
----
-*Created by [Your Name] - Showcasing Professional SDET Skills*
