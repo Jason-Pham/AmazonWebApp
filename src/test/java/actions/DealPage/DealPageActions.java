@@ -10,18 +10,18 @@ import static helpers.Utils.click;
 
 public class DealPageActions extends BaseActions {
 
-    page_objects.DealPage.DealPage dealPage = new page_objects.DealPage.DealPage(baseActionsDriver);
+    page_objects.DealPage.DealPage dealPage = new page_objects.DealPage.DealPage(driver);
 
     public void ExecuteClickOnSortButton() throws IOException {
         click(dealPage.sort_dropdown_box);
     }
 
     public void ExecuteClickOnSortButtonType(String sortType) throws IOException {
-        click(baseActionsDriver.findElement(By.xpath("(//*[contains(text(), '" + sortType + "')])[3]")));
+        click(driver.findElement(By.xpath("(//*[contains(text(), '" + sortType + "')])[3]")));
     }
 
     public void ExecuteClickOnDeal(int dealNumber) throws IOException {
-        click(baseActionsDriver.findElement(
+        click(driver.findElement(
                 By.xpath("(//*[contains(@class, 'a-spacing-mini')])[" + dealNumber + "]")));
     }
 

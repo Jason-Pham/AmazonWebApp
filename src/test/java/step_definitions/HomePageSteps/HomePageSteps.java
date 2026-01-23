@@ -12,9 +12,9 @@ public class HomePageSteps extends BaseSteps {
     @Given("^User is opening Amazon home page$")
     public void userIsOpeningAmazonHomePage() {
         if (Constant.Environment != null)
-            baseStepsDriver.navigate().to(Constant.Environment);
+            driver.navigate().to(Constant.Environment);
         else
-            baseStepsDriver.navigate().to(UrlEnvInfo.amazon_au_prod);
+            driver.navigate().to(UrlEnvInfo.amazon_au_prod);
     }
 
     @And("^User search for \"([^\"]*)\"$")
@@ -25,7 +25,7 @@ public class HomePageSteps extends BaseSteps {
     @When("^User clicks on \"([^\"]*)\" button$")
     public void userClicksOnButton(String buttonText) throws Throwable {
         if (buttonText.equalsIgnoreCase("Best Sellers")) {
-            baseStepsDriver.navigate().to("https://www.amazon.com/gp/bestsellers/?ref_=nav_cs_bestsellers");
+            driver.navigate().to("https://www.amazon.com/gp/bestsellers/?ref_=nav_cs_bestsellers");
         } else {
             homePageActions.ExecuteClickOnSignInLinkWithText(buttonText);
         }

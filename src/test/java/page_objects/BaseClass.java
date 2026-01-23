@@ -1,13 +1,12 @@
 package page_objects;
 
-import helpers.Hooks;
 import org.openqa.selenium.WebDriver;
 
 public class BaseClass {
 
-    private WebDriver baseClassesDriver;
+    protected WebDriver driver;
 
     public BaseClass() {
-        baseClassesDriver = helpers.DriverFactory.getInstance().getDriver();
+        driver = helpers.DriverFactory.getInstance().getDriver();
     }
 }

@@ -14,7 +14,7 @@ import static helpers.Utils.*;
 
 public class ProductPageActions extends BaseActions {
 
-    page_objects.ProductPage.ProductPage productPage = new page_objects.ProductPage.ProductPage(baseActionsDriver);
+    page_objects.ProductPage.ProductPage productPage = new page_objects.ProductPage.ProductPage(driver);
 
     private boolean CheckProductSizeDropBox() {
         return productPage.product_size_dropbox.size() != 0;
@@ -43,7 +43,7 @@ public class ProductPageActions extends BaseActions {
     private void ChooseQuantity(int numberOfProduct) throws IOException {
         try {
             click(productPage.quantity_dropbox);
-            click(baseActionsDriver
+            click(driver
                     .findElement(By.xpath("//select[@id='quantity']//child::option[" + numberOfProduct + "]")));
         } catch (Throwable e) {
             PrintLog.printLogActionInPage(
@@ -124,7 +124,7 @@ public class ProductPageActions extends BaseActions {
                             round(totalPrice, 2),
                             "Add to cart is success but the current total price is: " + round(totalPrice, 2));
 
-                    List<WebElement> itemNumberAfterAddToCart = baseActionsDriver
+                    List<WebElement> itemNumberAfterAddToCart = driver
                             .findElements(By.xpath("//*[contains(text(), '"
                                     + totalItem + " item') " +
                                     "or contains(text(), '"

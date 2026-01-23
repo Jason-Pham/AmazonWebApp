@@ -4,7 +4,7 @@ import actions.BaseActions;
 
 public class SignInPageActions extends BaseActions {
 
-    page_objects.SignInPage.SignInPage signInPage = new page_objects.SignInPage.SignInPage(baseActionsDriver);
+    page_objects.SignInPage.SignInPage signInPage = new page_objects.SignInPage.SignInPage(driver);
 
     public boolean userIsInSignInPage() {
         return signInPage.sign_in_text.size() != 0 && signInPage.email_input.size() != 0

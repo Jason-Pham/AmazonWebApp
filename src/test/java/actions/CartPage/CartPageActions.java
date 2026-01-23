@@ -12,7 +12,7 @@ import static helpers.Utils.*;
 
 public class CartPageActions extends BaseActions {
 
-    page_objects.CartPage.CartPage cartPage = new page_objects.CartPage.CartPage(baseActionsDriver);
+    page_objects.CartPage.CartPage cartPage = new page_objects.CartPage.CartPage(driver);
 
     public void DeleteItem(int numberOfItem) throws IOException {
         click(cartPage.delete_buttons.get(numberOfItem - 1));
@@ -64,7 +64,7 @@ public class CartPageActions extends BaseActions {
                 input.sendKeys(org.openqa.selenium.Keys.ENTER);
             } else {
                 // Handle hidden input (Stepper UI) via JavaScript
-                org.openqa.selenium.JavascriptExecutor js = (org.openqa.selenium.JavascriptExecutor) baseActionsDriver;
+                org.openqa.selenium.JavascriptExecutor js = (org.openqa.selenium.JavascriptExecutor) driver;
                 js.executeScript("arguments[0].value = arguments[1];", input, String.valueOf(quantity));
                 js.executeScript("arguments[0].dispatchEvent(new Event('change'));", input);
                 // Sometimes additional events are needed
@@ -116,7 +116,7 @@ public class CartPageActions extends BaseActions {
         for (WebElement item_quantity : cartPage.item_quantities)
             total_quantity_on_cart += Integer.valueOf(item_quantity.getText());
 
-        List<WebElement> total_quantities_on_cart = baseActionsDriver.findElements(By.xpath("//span[contains(text(), '"
+        List<WebElement> total_quantities_on_cart = driver.findElements(By.xpath("//span[contains(text(), '"
                 + total_quantity_on_cart + " item') or contains(text(), '" + total_quantity_on_cart + " items')]"));
 
         if (total_quantities_on_cart.size() == 0) {

@@ -10,7 +10,7 @@ import static helpers.Utils.sendKeys;
 
 public class HomePageActions extends BaseActions {
 
-    page_objects.HomePage.HomePage homePage = new page_objects.HomePage.HomePage(baseActionsDriver);
+    page_objects.HomePage.HomePage homePage = new page_objects.HomePage.HomePage(driver);
 
     public boolean UserIsInHomePage() {
         return homePage.home_page_banners.size() != 0;
@@ -18,9 +18,9 @@ public class HomePageActions extends BaseActions {
 
     public void ExecuteClickOnSignInLinkWithText(String text) throws IOException {
         try {
-            click(baseActionsDriver.findElement(By.linkText(text)));
+            click(driver.findElement(By.linkText(text)));
         } catch (Exception e) {
-            click(baseActionsDriver.findElement(By.xpath("//*[contains(text(), '" + text + "')]")));
+            click(driver.findElement(By.xpath("//*[contains(text(), '" + text + "')]")));
         }
     }
 

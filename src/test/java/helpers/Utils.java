@@ -1,8 +1,6 @@
 package helpers;
 
-// import com.vimalselvam.cucumber.listener.Reporter; // Removed incompatible reporter
 import helpers.ReportHelper.ScreenshotHelper;
-import helpers.DriverFactory;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
@@ -12,7 +10,7 @@ import org.testng.Assert;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.time.Duration; // For Selenium 4 Duration
+import java.time.Duration;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 
@@ -22,8 +20,6 @@ public class Utils {
     public static long waitTime = 15;
 
     public static void captureScreenshot() throws IOException {
-        // Reporter usage removed - incompatible
-        // If we want screenshots, we need a new mechanism or just save to disk
         ScreenshotHelper.takeScreenshot(DriverFactory.getInstance().getDriver(),
                 LocalDateTime.now().getHour()
                         + LocalDateTime.now().getMinute()
@@ -32,16 +28,11 @@ public class Utils {
 
     private static void waitForElement(WebElement element, long time) throws IOException {
         try {
-            WebDriverWait wait = new WebDriverWait(DriverFactory.getInstance().getDriver(), Duration.ofSeconds(time)); // Selenium
-                                                                                                                       // 4
-                                                                                                                       // uses
-                                                                                                                       // Duration
+            WebDriverWait wait = new WebDriverWait(DriverFactory.getInstance().getDriver(), Duration.ofSeconds(time));
             wait.until(elementToBeClickable(element));
         } catch (NullPointerException | WebDriverException e) {
             captureScreenshot();
-            // Reporter.addStepLog("Waiting for this element is failed: " +
-            // element.getText());
-            System.out.println("Waiting for this element is failed: " + element); // Fallback logging
+            System.out.println("Waiting for this element is failed: " + element);
             Assert.fail();
         }
     }
@@ -53,8 +44,6 @@ public class Utils {
                 wait.until(elementToBeClickable(element));
         } catch (NullPointerException | WebDriverException e) {
             captureScreenshot();
-            // Reporter.addStepLog("Waiting for this element is failed: " +
-            // elements.get(0).getText());
             Assert.fail();
         }
     }
@@ -63,12 +52,9 @@ public class Utils {
         try {
             waitForElement(element, waitTime);
             element.click();
-
             captureScreenshot();
         } catch (NullPointerException | WebDriverException e) {
             captureScreenshot();
-            // Reporter.addStepLog("Clicking in this element is failed: " +
-            // element.getText());
             System.out.println("Clicking in this element is failed: " + element);
             Assert.fail("");
         }
@@ -77,11 +63,9 @@ public class Utils {
     private static void clear(WebElement element) throws IOException {
         try {
             waitForElement(element, waitTime);
-
             element.clear();
         } catch (NullPointerException | WebDriverException e) {
             captureScreenshot();
-            // Reporter.addStepLog("Clearing this element is failed: " + element.getText());
             Assert.fail();
         }
     }
@@ -90,13 +74,10 @@ public class Utils {
         try {
             waitForElement(element, waitTime);
             clear(element);
-
             element.sendKeys(keys);
             captureScreenshot();
         } catch (NullPointerException | WebDriverException e) {
             captureScreenshot();
-            // Reporter.addStepLog("Send keys for this element is failed: " +
-            // element.getText());
             Assert.fail();
         }
     }
@@ -105,7 +86,6 @@ public class Utils {
         try {
             JavascriptExecutor js = (JavascriptExecutor) DriverFactory.getInstance().getDriver();
             js.executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", element);
-            // Wait a bit for the scroll to complete
             Thread.sleep(500);
         } catch (Exception e) {
             System.out.println("Scrolling to element failed: " + element);

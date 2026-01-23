@@ -1,12 +1,11 @@
 package actions;
 
-import helpers.Hooks;
 import org.openqa.selenium.WebDriver;
 
 public class BaseActions {
-    protected WebDriver baseActionsDriver;
+    protected WebDriver driver;
 
     public BaseActions() {
-        baseActionsDriver = helpers.DriverFactory.getInstance().getDriver();
+        driver = helpers.DriverFactory.getInstance().getDriver();
     }
 }

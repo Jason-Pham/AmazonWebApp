@@ -12,9 +12,13 @@ public class ServiceHooks {
 
     @Before
     public void initializeTest() {
-        // Driver initialization is lazy-loaded in DriverFactory, but we can log start
-        // here
         PrintLog.printLogActionInPage("Starting Scenario");
+
+        // Ensure browser is configured
+        org.openqa.selenium.WebDriver driver = DriverFactory.getInstance().getDriver();
+        driver.manage().timeouts().implicitlyWait(java.time.Duration.ofSeconds(15));
+        driver.manage().window().maximize();
+        driver.manage().deleteAllCookies();
     }
 
     @After
